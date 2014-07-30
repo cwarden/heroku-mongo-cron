@@ -1,0 +1,10 @@
+#!/bin/sh
+
+# Connect to the primary node of a MongoDB replica set, and optionally run scripts
+
+USERNAME=$MONGO_USER
+PASSWORD=$MONGO_PASS
+DB=$MONGO_DB
+
+PRIMARY=$(mongo $MONGO_HOST/$DB --username $USERNAME --password $PASSWORD --quiet --eval "db.isMaster()['primary']")
+mongo --username $USERNAME --password $PASSWORD $PRIMARY/$DB

@@ -7,4 +7,4 @@ PASSWORD=$MONGO_PASS
 DB=$MONGO_DB
 
 PRIMARY=$(mongo $MONGO_HOST/$DB --username $USERNAME --password $PASSWORD --quiet --eval "db.isMaster()['primary']")
-mongo --username $USERNAME --password $PASSWORD $PRIMARY/$DB
+mongo --username $USERNAME --password $PASSWORD $PRIMARY/$DB "$@"
